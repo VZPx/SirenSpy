@@ -13,7 +13,7 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 ## Setup
 
 **Step 1:** In RPCS3, go to:  
-`GCI → Properties → Network → DNS → 127.0.0.1`
+`RPCS3 → Config → Network → DNS → 127.0.0.1`
 
 **Step 2:** Generate .ELF File:  
 `RPCS3 → Utilities → Decrypt PS3 Binaries → Eboot.bin`
