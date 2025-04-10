@@ -3,7 +3,7 @@
 C# gamespy private server (specifically for Gotham City Impostors)
 (bad code btw)
 
-Only tested with RPCS3:
+_Only tested with RPCS3_
 
 **Setup**
 Set local DNS on rpcs3:
