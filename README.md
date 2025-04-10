@@ -1,13 +1,18 @@
-# SirenSpy 
-**State: Can't get past main menu. (EXTREMELY Unfinished PRE-PRE-PRE-Alpha)**
+# SirenSpy
 
-C# gamespy private server (specifically for Gotham City Impostors)
+**State:** 🚧 EXTREMELY Unfinished – PRE-PRE-PRE-Alpha  
+**Status:** Can’t even get past the main menu.  
 
-(bad code btw)
+Private C# Gamespy server – made specifically for *Gotham City Impostors*.  
+(Yes, the code is bad. No, I’m not fixing it yet.)
 
-_Only tested with RPCS3_
+> ⚠️ Only tested using **RPCS3**.
 
-**Setup**
-Set local DNS on rpcs3:
-GCI->Properties->Network->DNS->127.0.0.1
+---
 
+## Setup
+
+**Step 1:** In RPCS3, go to:  
+`GCI → Properties → Network → DNS → 127.0.0.1`
+
+That’s it for now. If it breaks, i'ts expected.
