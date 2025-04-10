@@ -1,4 +1,4 @@
-# SirenSpy
+# SirenSpy (PS3/RPCS3)
 
 **State:** 🚧 EXTREMELY Unfinished – PRE-PRE-PRE-Alpha  
 **Status:** Can’t even get past the main menu.  
