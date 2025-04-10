@@ -15,4 +15,12 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 **Step 1:** In RPCS3, go to:  
 `GCI → Properties → Network → DNS → 127.0.0.1`
 
+**Step 2:** Generate .ELF File
+`RPCS3 → Utilities → Decrypt PS3 Binaries → Eboot.bin`
+
+**Step 3:** Drag .ELF file to Hex Editor and replace
+`"https://%s.api.gamespy"` with `"http://%s.api.gamespy`
+
+**Step 4:** Boot modified .ELF in RPCS3 to open GCI.
+
 That’s it for now. If it breaks, i'ts expected.
