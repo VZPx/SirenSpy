@@ -17,6 +17,7 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 
 **Step 2:** Generate .ELF File:  
 `RPCS3 → Utilities → Decrypt PS3 Binaries → Eboot.bin`
+> Eboot.bin is located in Gotham City Impostors → USDIR directory 
 
 **Step 3:** Drag .ELF file to Hex Editor and replace:  
 `"https://%s.api.gamespy"` with `"http://%s.api.gamespy`
