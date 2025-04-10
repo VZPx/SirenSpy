@@ -20,6 +20,7 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 
 **Step 3:** Drag .ELF file to Hex Editor and replace:  
 `"https://%s.api.gamespy"` with `"http://%s.api.gamespy`
+> 🛠️ Important: Make sure to add a byte count of 1 for each string replaced so the file size stays the same.
 
 **Step 4:** Boot modified .ELF in RPCS3 to open GCI.
 
