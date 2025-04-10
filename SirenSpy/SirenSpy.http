@@ -1,0 +1,5 @@
+@SirenSpy_HostAddress = http://127.0.0.1:5292
+
+GET {{SirenSpy_HostAddress}}/weatherforecast/
+Accept: application/json
+###

@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "Method": "LoginPs3CertWithGameId",
+    "RelativePath": "AuthService",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestBody",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "Method": "LoginRemoteAuthWithGameId",
+    "RelativePath": "AuthService",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestBody",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "Method": "HandlePostRequestAsync",
+    "RelativePath": "AuthService/AuthService.asmx",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
