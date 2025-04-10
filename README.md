@@ -23,7 +23,7 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 `"https://%s.api.gamespy"` with `"http://%s.api.gamespy`
 > 🛠️ Important: Make sure to add a byte count of 1 for each string replaced so the file size stays the same.
 
-**Final Step:** Boot modified .ELF to run GCI, and run SirenSpy along with it.
+**Final Step:** Boot modified .ELF to run Gotham City Impostors, and run SirenSpy along with it.
 
 
 That’s it for now. If it breaks, i'ts expected.
