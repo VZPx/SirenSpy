@@ -4,7 +4,7 @@
 **Status:** Can’t even get past the main menu.  
 
 Private C# Gamespy server – made specifically for *Gotham City Impostors*.  
-(Yes, the code is bad. No, I’m not fixing it yet.)
+(Yes, the code is bad (Everything is hardcoded). No, I’m not fixing it yet.)
 
 > ⚠️ Only tested using **RPCS3**.
 
