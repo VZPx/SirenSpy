@@ -8,7 +8,7 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 
 > ⚠️ Only tested using **RPCS3**.
 
-**What needs fixing:** The `LoginRemoteAuthWithGameId` method in `AuthServiceController.cs` should return the correct response data.
+**What needs fixing:**   The `LoginRemoteAuthWithGameId` method in `AuthServiceController.cs` should return the correct response data.
 
 ---
 
