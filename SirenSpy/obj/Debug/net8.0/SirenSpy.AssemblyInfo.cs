@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SirenSpy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b3d5b2b313cacb4ce97879701450c54a486e85a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SirenSpy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SirenSpy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

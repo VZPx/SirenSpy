@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.Linq;
 
 namespace SirenSpy.Controllers
 {
@@ -26,7 +27,7 @@ namespace SirenSpy.Controllers
 			if (soapAction.Contains("LoginPs3CertWithGameId"))
 			{
 				Siren.Log("Requesting gamespy token!!", ConsoleColor.Blue);
-				return await LoginPs3CertWithGameId(requestBody); 
+				return await LoginPs3CertWithGameId(requestBody);
 			}
 			else if (soapAction.Contains("LoginRemoteAuthWithGameId"))
 			{
@@ -38,14 +39,6 @@ namespace SirenSpy.Controllers
 			return Ok();
 		}
 
-		private const string SignatureKey = "6FEC09F2E2B1F69C6F4A" +
-			"E9C7674EE5AAE734F7EFDA484DAAF22728355128F2440F4925F7" +
-			"5663116BC7194DE318D4812A2CDEC371670BF7EEE06F43A21BEB" +
-			"5867F79D40CAAA91D5A87E3A09097BE88F52AD47ED651889B65D" +
-			"71875F61E7C34B43BD8EC2F52FF3166EC61D897A3427A1FA32F3" +
-			"F12A987796E1A28FB942E96079FF";
-
-		private const string SignatureExp = "010001";
 
 		public async Task<IActionResult> LoginPs3CertWithGameId(string requestBody)
 		{
@@ -58,8 +51,8 @@ namespace SirenSpy.Controllers
     <SOAP-ENV:Body>
         <ns1:LoginPs3CertWithGameIdResult>
             <ns1:responseCode>0</ns1:responseCode>
-            <ns1:authToken>12345678</ns1:authToken>
-            <ns1:partnerChallenge>test</ns1:partnerChallenge>
+            <ns1:authToken>11111111111111111111111111111111</ns1:authToken>
+            <ns1:partnerChallenge>22222222222222222222222222222222</ns1:partnerChallenge>
         </ns1:LoginPs3CertWithGameIdResult>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>";
@@ -70,50 +63,109 @@ namespace SirenSpy.Controllers
 			return Content(xmlResponse, "text/xml");
 		}
 
-		//rsaprivatekey(hex):3082025b0201000281806fec09f2e2b1f69c6f4ae9c7674ee5aae734f7efda484daaf22728355128f2440f4925f75663116bc7194de318d4812a2cdec371670bf7eee06f43a21beb5867f79d40caaa91d5a87e3a09097be88f52ad47ed651889b65d71875f61e7c34b43bd8ec2f52ff3166ec61d897a3427a1fa32f3f12a987796e1a28fb942e96079ff0203010001028180277a7e03e3bcdc7d4fb08007eb43e435457ae49e014411c963c33626a06b2e119dc6b292ad3122bafeaec94f7ab9b299fadbd4dad27b61482c7872c5e2cd40106b15f2ab42a646a889087465adbd18ae7cb05ae51afbcde7f8700ae54f0799419020409f5545369bbc5a68523a4cafd808fb3b4bf4cad4e04be5170b77b14621024100c8ea74106c0112992a98201febdc5abe399bf5433c6751508c49b8f7ecdac95acb90bab235adcd85415ce46f3ecd2363e5d4de3146e6820109f518ac66c2562f0241008e9b6fa2e58bc0c7db9c88bb7884882bfc599da403e15b95a27994537a75f42bb4f15dc4f49de6af7ac8c3ffbbc4e49253dcd08f78abf64a0bd63a912fbdf531024040f319e61d2413a11415ed7ca440adcd04ce97f0ce5c0ffb5bfe911f04a08dab1e5781230f1b4a6f237c26149856b4741cde3d9dec6fa3e33616d78d14030add0241008aefb101f9b600aa36b1f91cfcbbd29758124f5d7e524f1227eb5fb13cfc32596abe45672013beae7467a95d3c2905aff2788dd159f5dfcc2060254b524235e102404f14430b82d693ab1e4a8ffeee8fed4f6d42ffc01668c98861c7b6c6ebb88dc4dc6d1d1299ec820a8b48922752214a2230c986a4cb6336d554ac66b95ed640b7
-
-		private const string RSA_PRIVATE_KEY_HEX = @"3082025b0201000281806fec09f2e2b1f69c6f4ae9c7674ee5aae734f7efda484daaf22728355128f2440f4925f75663116bc7194de318d4812a2cdec371670bf7eee06f43a21beb5867f79d40caaa91d5a87e3a09097be88f52ad47ed651889b65d71875f61e7c34b43bd8ec2f52ff3166ec61d897a3427a1fa32f3f12a987796e1a28fb942e96079ff0203010001028180277a7e03e3bcdc7d4fb08007eb43e435457ae49e014411c963c33626a06b2e119dc6b292ad3122bafeaec94f7ab9b299fadbd4dad27b61482c7872c5e2cd40106b15f2ab42a646a889087465adbd18ae7cb05ae51afbcde7f8700ae54f0799419020409f5545369bbc5a68523a4cafd808fb3b4bf4cad4e04be5170b77b14621024100c8ea74106c0112992a98201febdc5abe399bf5433c6751508c49b8f7ecdac95acb90bab235adcd85415ce46f3ecd2363e5d4de3146e6820109f518ac66c2562f0241008e9b6fa2e58bc0c7db9c88bb7884882bfc599da403e15b95a27994537a75f42bb4f15dc4f49de6af7ac8c3ffbbc4e49253dcd08f78abf64a0bd63a912fbdf531024040f319e61d2413a11415ed7ca440adcd04ce97f0ce5c0ffb5bfe911f04a08dab1e5781230f1b4a6f237c26149856b4741cde3d9dec6fa3e33616d78d14030add0241008aefb101f9b600aa36b1f91cfcbbd29758124f5d7e524f1227eb5fb13cfc32596abe45672013beae7467a95d3c2905aff2788dd159f5dfcc2060254b524235e102404f14430b82d693ab1e4a8ffeee8fed4f6d42ffc01668c98861c7b6c6ebb88dc4dc6d1d1299ec820a8b48922752214a2230c986a4cb6336d554ac66b95ed640b7";
-
-		private const string RSA_PRIVATE_KEY = @"-----BEGIN RSA PRIVATE KEY-----
-MIICWwIBAAKBgG/sCfLisfacb0rpx2dO5arnNPfv2khNqvInKDVRKPJED0kl91Zj
-EWvHGU3jGNSBKizew3FnC/fu4G9DohvrWGf3nUDKqpHVqH46CQl76I9SrUftZRiJ
-tl1xh19h58NLQ72OwvUv8xZuxh2JejQnofoy8/EqmHeW4aKPuULpYHn/AgMBAAEC
-gYAnen4D47zcfU+wgAfrQ+Q1RXrkngFEEcljwzYmoGsuEZ3GspKtMSK6/q7JT3q5
-spn629Ta0nthSCx4csXizUAQaxXyq0KmRqiJCHRlrb0YrnywWuUa+83n+HAK5U8H
-mUGQIECfVUU2m7xaaFI6TK/YCPs7S/TK1OBL5RcLd7FGIQJBAMjqdBBsARKZKpgg
-H+vcWr45m/VDPGdRUIxJuPfs2slay5C6sjWtzYVBXORvPs0jY+XU3jFG5oIBCfUY
-rGbCVi8CQQCOm2+i5YvAx9uciLt4hIgr/FmdpAPhW5WieZRTenX0K7TxXcT0neav
-esjD/7vE5JJT3NCPeKv2SgvWOpEvvfUxAkBA8xnmHSQToRQV7XykQK3NBM6X8M5c
-D/tb/pEfBKCNqx5XgSMPG0pvI3wmFJhWtHQc3j2d7G+j4zYW140UAwrdAkEAiu+x
-Afm2AKo2sfkc/LvSl1gST11+Uk8SJ+tfsTz8MllqvkVnIBO+rnRnqV08KQWv8niN
-0Vn138wgYCVLUkI14QJATxRDC4LWk6seSo/+7o/tT21C/8AWaMmIYce2xuu4jcTc
-bR0SmeyCCotIkidSIUoiMMmGpMtjNtVUrGa5XtZAtw==
------END RSA PRIVATE KEY-----
-";
-
 		public async Task<IActionResult> LoginRemoteAuthWithGameId(string requestBody)
 		{
+			string userId = "11111";
+			string profileId = "22222";
+			string nick = "Jackalus";
+			var SIGNATURE_PREFIX = "0001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF003020300C06082A864886F70D020505000410";
+			var doc = XDocument.Parse(requestBody);
+			XNamespace ns1 = "http://gamespy.net/AuthService/";
+
+			string version = doc.Descendants(ns1 + "version").FirstOrDefault()?.Value ?? "1";
+			string partnerCode = doc.Descendants(ns1 + "partnercode").FirstOrDefault()?.Value ?? "0";
+			string namespaceId = doc.Descendants(ns1 + "namespaceid").FirstOrDefault()?.Value ?? "0";
+
+			string PEERKEYMODULUS = "aefb5064bbd1eb632fa8d57aab1c49366ce0ee3161cbef19f2b7971b63b811790ecbf6a47b34c55f65a0766b40c261c5d69c394cd320842dd2bccba883d30eae8fdba5d03b21b09bfc600dcb30b1b2f3fbe8077630b006dcb54c4254f14891762f72e7bbfe743eb8baf65f9e8c8d11ebe46f6b59e986b4c394cfbc2c8606e29f";
+			string SERVERDATA = "95980bf5011ce73f2866b995a272420c36f1e8b4ac946f0b5bfe87c9fef0811036da00cfa85e77e00af11c924d425ec06b1dd052feab1250376155272904cbf9da831b0ce3d52964424c0a426b869e2c0ad11ffa3e70496e27ea250adb707a96b3496bff190eafc0b6b9c99db75b02c2a822bb1b5b3d954e7b2c0f9b1487e3e1";
+			string PEERKEYEXPONENT = "000001";
+
+			string hash = ComputeGameSpyHash(
+	303, int.Parse(version), int.Parse(partnerCode), int.Parse(namespaceId),
+	11111, 22222, 0,
+	nick, nick, "",
+	PEERKEYMODULUS, SERVERDATA
+);
+
+			DateTime now = DateTime.Now;
+
+			string dateText = now.ToString("dddd, MMMM dd, yyyy h:mm:ss tt");
+
+			byte[] textBytes = Encoding.UTF8.GetBytes(dateText);
+			string base64Timestamp = Convert.ToBase64String(textBytes);
+
 			string xmlResponse = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/""
-                   xmlns:SOAP-ENC=""http://schemas.xmlsoap.org/soap/encoding/""
-                   xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
-                   xmlns:xsd=""http://www.w3.org/2001/XMLSchema""
                    xmlns:ns1=""http://gamespy.net/AuthService/"">
     <SOAP-ENV:Body>
         <ns1:LoginRemoteAuthWithGameIdResult>
             <ns1:responseCode>0</ns1:responseCode>
-            <ns1:certificate>{RSA_PRIVATE_KEY}</ns1:certificate>
-            <ns1:peerkeyprivate>{RSA_PRIVATE_KEY_HEX}</ns1:peerkeyprivate>
+            <ns1:certificate>
+                <ns1:length>303</ns1:length>
+                <ns1:version>{version}</ns1:version>
+                <ns1:partnercode>{partnerCode}</ns1:partnercode>
+                <ns1:namespaceid>{namespaceId}</ns1:namespaceid>
+                <ns1:userid>11111</ns1:userid>
+                <ns1:profileid>22222</ns1:profileid>
+                <ns1:expiretime>0</ns1:expiretime>
+                <ns1:profilenick>Jackalus</ns1:profilenick>
+                <ns1:uniquenick>Jackalus</ns1:uniquenick>
+                <ns1:cdkeyhash></ns1:cdkeyhash>
+                <ns1:peerkeymodulus>{PEERKEYMODULUS}</ns1:peerkeymodulus>
+                <ns1:peerkeyexponent>{PEERKEYEXPONENT}</ns1:peerkeyexponent>
+                <ns1:serverdata>{SERVERDATA}</ns1:serverdata>
+                <ns1:signature>{SIGNATURE_PREFIX + hash}</ns1:signature>
+				<ns1:timestamp>{base64Timestamp}</ns1:timestamp>
+            </ns1:certificate>
+            <ns1:peerkeyprivate>{PEERKEYEXPONENT}</ns1:peerkeyprivate>
         </ns1:LoginRemoteAuthWithGameIdResult>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>";
 
-			Console.WriteLine("\nResponding with:\n");
-			Console.WriteLine(xmlResponse);
-
+			Console.WriteLine("\nResponding with structured certificate...\n");
 			return Content(xmlResponse, "text/xml");
 		}
-	
+
+		private string ComputeGameSpyHash(
+	int length, int version, int partnerCode, int namespaceId,
+	int userId, int profileId, int expireTime,
+	string profileNick, string uniqueNick, string cdKeyHash,
+	string peerKeyModulus, string serverData)
+		{
+			using (MemoryStream ms = new MemoryStream())
+			using (BinaryWriter writer = new BinaryWriter(ms))
+			{
+				// 1. Write the 4-byte integers (Little Endian)
+				writer.Write(length);
+				writer.Write(version);
+				writer.Write(partnerCode);
+				writer.Write(namespaceId);
+				writer.Write(userId);
+				writer.Write(profileId);
+				writer.Write(expireTime);
+
+				// 2. Write strings (ASCII encoded)
+				writer.Write(Encoding.ASCII.GetBytes(profileNick));
+				writer.Write(Encoding.ASCII.GetBytes(uniqueNick));
+				writer.Write(Encoding.ASCII.GetBytes(cdKeyHash));
+
+				// 3. Convert Hex Modulus to bytes and add it
+				writer.Write(Convert.FromHexString(peerKeyModulus));
+
+				// 4. Add the 0x01 separator byte
+				writer.Write((byte)0x01);
+
+				// 5. Convert Hex ServerData to bytes and add it
+				writer.Write(Convert.FromHexString(serverData));
+
+				// 6. Compute MD5
+				byte[] hashBytes = MD5.HashData(ms.ToArray());
+
+				// 7. Return as lowercase hex string (hexdigest)
+				return Convert.ToHexString(hashBytes).ToLower();
+			}
+		}
+
 	}
 }
 

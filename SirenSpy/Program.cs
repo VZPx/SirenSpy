@@ -13,7 +13,7 @@ var app = builder.Build();
 
 app.Use(async (context, next) =>
 {
-	await next.Invoke(); 
+	await next.Invoke();
 
 	var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
 	var requestedUrl = context.Request.Path.ToString();
@@ -25,7 +25,7 @@ app.Use(async (context, next) =>
 
 	var headers = context.Request.Headers;
 
-	context.Request.EnableBuffering(); 
+	context.Request.EnableBuffering();
 	var body = string.Empty;
 	if (context.Request.Body.CanSeek)
 	{
@@ -65,7 +65,7 @@ var udpServer = app.Services.GetRequiredService<UdpServer>();
 udpServer.Start();
 
 var tcpServer = app.Services.GetRequiredService<TCPServer>();
-tcpServer.Start();
+_ = tcpServer.Start();
 
 app.UseAuthorization();
 app.MapControllers();
@@ -76,7 +76,7 @@ app.Run();
 
 public class UdpServer
 {
-	private const int Port = 27900; 
+	private const int Port = 27900;
 	private UdpClient udpServer;
 
 	public UdpServer()
@@ -128,7 +128,7 @@ public class UdpServer
 
 		//Extract the game name starting from byte 5 until the null terminator
 		int startIndex = 5;
-		int gameNameLength = Array.IndexOf(requestData, (byte)0, startIndex) - startIndex; 
+		int gameNameLength = Array.IndexOf(requestData, (byte)0, startIndex) - startIndex;
 		if (gameNameLength <= 0)
 		{
 			Console.WriteLine("No valid game name found.");
@@ -220,7 +220,7 @@ public class TCPServer
 					Siren.WriteLine("Received raw bytes:", ConsoleColor.Green);
 					for (int i = 0; i < bytesRead; i++)
 					{
-						Siren.Write($"{buffer[i]:X2} ", ConsoleColor.Green); 
+						Siren.Write($"{buffer[i]:X2} ", ConsoleColor.Green);
 					}
 					Console.WriteLine();
 				}
