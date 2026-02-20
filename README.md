@@ -27,3 +27,6 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 
 
 That’s it for now. If it breaks, i'ts expected.
+
+## Thanks
+Unispy SDK/Code - Big thanks for getting past remote auth functions
