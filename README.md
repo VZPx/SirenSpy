@@ -1,7 +1,7 @@
 # SirenSpy (PS3/RPCS3)
 
 **State:** 🚧 EXTREMELY Unfinished – PRE-PRE-PRE-Alpha  
-**Status:** Stuck on Loading Profile screen (Gets past auth login)
+**Status:** Stuck on Loading Profile screen (SSL Cert Verification)
 
 Private C# Gamespy server – made specifically for *Gotham City Impostors*.  
 (Yes, the code is bad (Everything is hardcoded). No, I’m not fixing it yet.)
