@@ -32,6 +32,9 @@ To Unispy Key
 
 `aefb5064bbd1eb632fa8d57aab1c49366ce0ee3161cbef19f2b7971b63b811790ecbf6a47b34c55f65a0766b40c261c5d69c394cd320842dd2bccba883d30eae8fdba5d03b21b09bfc600dcb30b1b2f3fbe8077630b006dcb54c4254f14891762f72e7bbfe743eb8baf65f9e8c8d11ebe46f6b59e986b4c394cfbc2c8606e29f`
 
+Replace Exponent Key (should be right beside the Unispy key)
+`010001` to `000001`
+
 > 🛠️ Important: Make sure to add a byte count of 1 for each string replaced so the file size stays the same.
 
 **Final Step:** Boot modified .ELF to run Gotham City Impostors, and run SirenSpy along with it.
