@@ -15,10 +15,7 @@ builder.WebHost.ConfigureKestrel(options =>
 	options.ListenLocalhost(80);
 
 	// HTTPS (Port 443)
-	options.ListenLocalhost(443, listenOptions =>
-	{
-		listenOptions.UseHttps("Cert/agora_final_new.pfx", "1234"); // This uses the default dev certificate
-	});
+	options.ListenLocalhost(443);
 });
 
 var app = builder.Build();

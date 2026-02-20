@@ -1,6 +1,53 @@
 [
   {
-    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "ContainingType": "SirenSpy.Controllers.Gamespy.AgoraController",
+    "Method": "GetChallenges",
+    "RelativePath": "{userId}/challenge/list_open_challenges/{page}/{count}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SirenSpy.Controllers.Gamespy.AgoraController",
+    "Method": "GetChannels",
+    "RelativePath": "{userId}/feed/get_channels_by_owner/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SirenSpy.Controllers.Gamespy.AuthServiceController",
     "Method": "LoginPs3CertWithGameId",
     "RelativePath": "AuthService",
     "HttpMethod": "",
@@ -16,7 +63,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "ContainingType": "SirenSpy.Controllers.Gamespy.AuthServiceController",
     "Method": "LoginRemoteAuthWithGameId",
     "RelativePath": "AuthService",
     "HttpMethod": "",
@@ -32,7 +79,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SirenSpy.Controllers.AuthServiceController",
+    "ContainingType": "SirenSpy.Controllers.Gamespy.AuthServiceController",
     "Method": "HandlePostRequestAsync",
     "RelativePath": "AuthService/AuthService.asmx",
     "HttpMethod": "POST",
