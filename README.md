@@ -1,6 +1,6 @@
 # SirenSpy (PS3/RPCS3)
 
-**State:** 🚧 EXTREMELY Unfinished – PRE-PRE-PRE-Alpha  
+**State:** 🚧 Unfinished (Very WIP prototype)
 **Status:** Stuck on Loading Profile screen (Agora functionality unimplemented!)
 
 Private C# Gamespy server – made specifically for *Gotham City Impostors*.  
