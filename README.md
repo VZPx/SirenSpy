@@ -15,6 +15,9 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 **Step 1:** In RPCS3, go to:  
 `RPCS3 → Config → Network → DNS → 127.0.0.1`
 
+From here, get a DNS Redirector (I use Acrylic DNS) and redirect:
+`*gamespy.com` to `127.0.0.1` | `*gamespy.net` to `127.0.0.1` | `*.agoragames.com` to `127.0.0.1`
+
 **Step 2:** Generate .ELF File:  
 `RPCS3 → Utilities → Decrypt PS3 Binaries → Eboot.bin`
 > Eboot.bin is located in Gotham City Impostors → USDIR directory 
