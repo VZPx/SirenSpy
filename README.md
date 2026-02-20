@@ -1,14 +1,12 @@
 # SirenSpy (PS3/RPCS3)
 
 **State:** 🚧 EXTREMELY Unfinished – PRE-PRE-PRE-Alpha  
-**Status:** Can’t even get past the main menu.  
+**Status:** Stuck on Loading Profile screen (Gets past auth login)
 
 Private C# Gamespy server – made specifically for *Gotham City Impostors*.  
 (Yes, the code is bad (Everything is hardcoded). No, I’m not fixing it yet.)
 
 > ⚠️ Only tested using **RPCS3**.
-
-**What needs fixing:**   The `LoginRemoteAuthWithGameId` method in `AuthServiceController.cs` should return the correct response data.
 
 ---
 
