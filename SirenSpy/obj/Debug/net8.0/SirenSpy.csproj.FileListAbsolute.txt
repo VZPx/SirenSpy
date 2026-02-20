@@ -19,11 +19,6 @@ C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.MvcAppli
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets\msbuild.SirenSpy.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets\msbuild.build.SirenSpy.props
-C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SirenSpy.props
-C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SirenSpy.props
-C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\scopedcss\bundle\SirenSpy.styles.css
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.csproj.Up2Date
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.dll
@@ -31,3 +26,12 @@ C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\refint\SirenSpy.d
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.pdb
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.genruntimeconfig.cache
 C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\ref\SirenSpy.dll
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\bin\Debug\net8.0\SirenSpy.staticwebassets.endpoints.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\SirenSpy.sourcelink.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\dante\source\repos\SirenSpy\SirenSpy\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -7,7 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<UdpServer>();
-builder.Services.AddSingleton<TCPServer>(provider => new TCPServer(443));
+//builder.Services.AddSingleton<TCPServer>(provider => new TCPServer(443));
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+	// HTTP (Port 80)
+	options.ListenLocalhost(80);
+
+	// HTTPS (Port 443)
+	options.ListenLocalhost(443, listenOptions =>
+	{
+		listenOptions.UseHttps("Cert/agora_final_new.pfx", "1234"); // This uses the default dev certificate
+	});
+});
 
 var app = builder.Build();
 
@@ -64,8 +76,8 @@ app.Use(async (context, next) =>
 var udpServer = app.Services.GetRequiredService<UdpServer>();
 udpServer.Start();
 
-var tcpServer = app.Services.GetRequiredService<TCPServer>();
-_ = tcpServer.Start();
+//var tcpServer = app.Services.GetRequiredService<TCPServer>();
+//_ = tcpServer.Start();
 
 app.UseAuthorization();
 app.MapControllers();
