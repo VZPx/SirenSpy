@@ -15,6 +15,8 @@ Private C# Gamespy server – made specifically for *Gotham City Impostors*.
 **Step 1:** In RPCS3, go to:  
 `RPCS3 → Config → Network → DNS → 127.0.0.1`
 
+(Make sure you're connected with RPCN)
+
 From here, get a DNS Redirector (I use Acrylic DNS) and redirect:
 `*.gamespy.com` to `127.0.0.1` | `*.gamespy.net` to `127.0.0.1` | `*.agoragames.com` to `127.0.0.1`
 
