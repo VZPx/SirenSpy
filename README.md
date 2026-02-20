@@ -39,5 +39,8 @@ To Unispy Key
 
 That’s it for now. If it breaks, i'ts expected.
 
+## What needs fixing
+The game expects a valid signed certificate which we don't have, so we need to bypass the SSL Verification method in the EBOOT.BIN, possible with GHIDRA or IDA.
+
 ## Thanks
 Unispy SDK/Code - Big thanks for getting past remote auth
