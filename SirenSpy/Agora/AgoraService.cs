@@ -63,7 +63,7 @@ namespace SirenSpy.Agora
 
 		#region profile
 
-		// The game sends names like "TTV_Keroyz=d003ca44": the online id followed by a PS3 stack address that
+		// The online id followed by a PS3 stack address that
 		// changes every call, so only the part before '=' identifies the player.
 		private static string NameKey(string name)
 		{
