@@ -15,9 +15,15 @@ namespace SirenSpy.Controllers.Gamespy
 			var soapAction = Request.Headers["SOAPAction"].ToString();
 			string requestBody;
 
-			using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
+			try
 			{
+				using var reader = new StreamReader(Request.Body, Encoding.UTF8);
 				requestBody = await reader.ReadToEndAsync();
+			}
+			catch (Exception ex) when (ex is OperationCanceledException or IOException)
+			{
+				// The game closed the connection mid-request (e.g. it crashed); nothing to answer
+				return new EmptyResult();
 			}
 
 			Console.WriteLine($"Received SOAPAction: {soapAction}");
@@ -42,7 +48,12 @@ namespace SirenSpy.Controllers.Gamespy
 
 		public async Task<IActionResult> LoginPs3CertWithGameId(string requestBody)
 		{
-			string xmlResponse = @"<?xml version=""1.0"" encoding=""UTF-8""?>
+			// Identify the player from the PS3 NP ticket; the token comes back in LoginRemoteAuthWithGameId
+			var ticket = System.Text.RegularExpressions.Regex.Match(requestBody, @"<(?:\w+:)?Value>([^<]*)</").Groups[1].Value;
+			var (player, token) = SirenSpy.Gamespy.GameSpyPlayers.LoginWithTicket(ticket);
+			Siren.Log($"[Auth] {player.OnlineId} (account {player.AccountId}) -> profile {player.ProfileId}", ConsoleColor.Blue);
+
+			string xmlResponse = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/""
                    xmlns:SOAP-ENC=""http://schemas.xmlsoap.org/soap/encoding/""
                    xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
@@ -51,7 +62,7 @@ namespace SirenSpy.Controllers.Gamespy
     <SOAP-ENV:Body>
         <ns1:LoginPs3CertWithGameIdResult>
             <ns1:responseCode>0</ns1:responseCode>
-            <ns1:authToken>11111111111111111111111111111111</ns1:authToken>
+            <ns1:authToken>{token}</ns1:authToken>
             <ns1:partnerChallenge>22222222222222222222222222222222</ns1:partnerChallenge>
         </ns1:LoginPs3CertWithGameIdResult>
     </SOAP-ENV:Body>
@@ -65,9 +76,13 @@ namespace SirenSpy.Controllers.Gamespy
 
 		public async Task<IActionResult> LoginRemoteAuthWithGameId(string requestBody)
 		{
-			string userId = "11111";
-			string profileId = "22222";
-			string nick = "Jackalus";
+			var doc0 = XDocument.Parse(requestBody);
+			var authToken = doc0.Descendants().FirstOrDefault(e => e.Name.LocalName == "authtoken")?.Value ?? "";
+			var player = SirenSpy.Gamespy.GameSpyPlayers.ByToken(authToken);
+			int userId = player.UserId;
+			int profileId = player.ProfileId;
+			// GameSpy nicks are plain ASCII; PSN online ids already are
+			string nick = player.OnlineId.Length > 0 ? player.OnlineId : "Player" + profileId;
 			var SIGNATURE_PREFIX = "0001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF003020300C06082A864886F70D020505000410";
 			var doc = XDocument.Parse(requestBody);
 			XNamespace ns1 = "http://gamespy.net/AuthService/";
@@ -82,7 +97,7 @@ namespace SirenSpy.Controllers.Gamespy
 
 			string hash = ComputeGameSpyHash(
 	303, int.Parse(version), int.Parse(partnerCode), int.Parse(namespaceId),
-	11111, 22222, 0,
+	userId, profileId, 0,
 	nick, nick, "",
 	PEERKEYMODULUS, SERVERDATA
 );
@@ -105,11 +120,11 @@ namespace SirenSpy.Controllers.Gamespy
                 <ns1:version>{version}</ns1:version>
                 <ns1:partnercode>{partnerCode}</ns1:partnercode>
                 <ns1:namespaceid>{namespaceId}</ns1:namespaceid>
-                <ns1:userid>11111</ns1:userid>
-                <ns1:profileid>22222</ns1:profileid>
+                <ns1:userid>{userId}</ns1:userid>
+                <ns1:profileid>{profileId}</ns1:profileid>
                 <ns1:expiretime>0</ns1:expiretime>
-                <ns1:profilenick>Jackalus</ns1:profilenick>
-                <ns1:uniquenick>Jackalus</ns1:uniquenick>
+                <ns1:profilenick>{nick}</ns1:profilenick>
+                <ns1:uniquenick>{nick}</ns1:uniquenick>
                 <ns1:cdkeyhash></ns1:cdkeyhash>
                 <ns1:peerkeymodulus>{PEERKEYMODULUS}</ns1:peerkeymodulus>
                 <ns1:peerkeyexponent>{PEERKEYEXPONENT}</ns1:peerkeyexponent>

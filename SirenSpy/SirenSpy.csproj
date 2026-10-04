@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Allow running on a newer .NET runtime when 8.0 isn't installed -->
+    <RollForward>Major</RollForward>
   </PropertyGroup>
 
   <ItemGroup>
